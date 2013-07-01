@@ -1,0 +1,1 @@
+This is an adaptation of the 99 Scala problems by Phil Gold, which in turn is an adaption of the 99 Prolog problems. See http://aperiodic.net/phil/scala/s-99/#p09 for more information on each problem. As it is laid out, the answers are in the answers branch while the tests are located in both answers and master branches.
