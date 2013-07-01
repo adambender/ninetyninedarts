@@ -1,0 +1,4 @@
+name: NinetyNineDarts
+description: 99 Dart Problems based on 99 Scala Problems (http://aperiodic.net/phil/scala/s-99/)
+dependencies:
+  unittest: any

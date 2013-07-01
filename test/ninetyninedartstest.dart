@@ -1,0 +1,48 @@
+import 'package:unittest/unittest.dart';
+import '../lib/ninetyninedarts.dart';
+
+void main() {
+  test ('Find the last element of a list.', (){
+    expect(last([1, 1, 2, 3, 5, 8]), 8);
+  });
+
+  test ('Find the last but one element of a list.', (){
+    expect(penultimate([1, 1, 2, 3, 5, 8]), 5);
+  });
+
+  test ('Find the Kth element of a list.', (){
+    expect(nth(2, [1, 1, 2, 3, 5, 8]), 2);
+  });
+
+  test('Find the number of elements of a list.', (){
+    expect(length([1, 1, 2, 3, 5, 8]), 6);
+  });
+
+  test('Reverse a list.', (){
+    expect(reverse([1, 1, 2, 3, 5, 8]), [8, 5, 3, 2, 1, 1]);
+  });
+
+  test('Find out whether a list is a palindrome.', (){
+    expect(isPalindrome([1, 2, 3, 2, 1]), true);
+    expect(isPalindrome([1, 2, 3, 3, 1]), false);
+  });
+
+  test('Flatten a nested list structure.', (){
+    expect(flatten([[1, 1], 2, [3, [5, 8]]]), [1, 1, 2, 3, 5, 8]);
+  });
+
+  test('Eliminate consecutive duplicates of list elements.', (){
+    expect(compress(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
+        ['a', 'b', 'c', 'a', 'd', 'e']);
+  });
+
+  test('Pack consecutive duplicates of list elements into sublists.', (){
+    expect(pack(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
+        [['a', 'a', 'a', 'a'],['b'], ['c', 'c'], ['a', 'a'],['d'], ['e', 'e', 'e', 'e']]);
+  });
+
+  test(' Run-length encoding of a list.', (){
+    expect(encode(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
+        [new T2(4,'a'), new T2(1,'b'), new T2(2, 'c'), new T2(2,'a'), new T2(1,'d'), new  T2(4,'e')]);
+    });
+}
