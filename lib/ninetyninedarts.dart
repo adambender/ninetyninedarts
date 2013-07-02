@@ -65,6 +65,7 @@ pack(List l){
 
 encode(List l) =>pack(l).map((_) => new T2(_.length, _.first));
 
+encodeModified(List l){}
 
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){

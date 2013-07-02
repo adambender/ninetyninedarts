@@ -2,15 +2,15 @@ import 'package:unittest/unittest.dart';
 import '../lib/ninetyninedarts.dart';
 
 void main() {
-  test ('Find the last element of a list.', (){
+  test('Find the last element of a list.', (){
     expect(last([1, 1, 2, 3, 5, 8]), 8);
   });
 
-  test ('Find the last but one element of a list.', (){
+  test('Find the last but one element of a list.', (){
     expect(penultimate([1, 1, 2, 3, 5, 8]), 5);
   });
 
-  test ('Find the Kth element of a list.', (){
+  test('Find the Kth element of a list.', (){
     expect(nth(2, [1, 1, 2, 3, 5, 8]), 2);
   });
 
@@ -41,8 +41,13 @@ void main() {
         [['a', 'a', 'a', 'a'],['b'], ['c', 'c'], ['a', 'a'],['d'], ['e', 'e', 'e', 'e']]);
   });
 
-  test(' Run-length encoding of a list.', (){
+  test('Run-length encoding of a list.', (){
     expect(encode(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
         [new T2(4,'a'), new T2(1,'b'), new T2(2, 'c'), new T2(2,'a'), new T2(1,'d'), new  T2(4,'e')]);
-    });
+  });
+
+  test('Modified run-length encoding.', (){
+    expect(encodeModified(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
+        [new T2(4,'a'), 'b', new T2(2, 'c'), new T2(2,'a'),'d', new  T2(4,'e')]);
+  });
 }
