@@ -55,4 +55,9 @@ void main() {
     expect(decode([new T2(4,'a'), new T2(1,'b'), new T2(2, 'c'), new T2(2,'a'), new T2(1,'d'), new  T2(4,'e')]),
         ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']);
   });
+
+  test('Run-length encoding of a list (direct solution).', (){
+    expect(encode(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
+        [new T2(4,'a'), new T2(1,'b'), new T2(2, 'c'), new T2(2,'a'), new T2(1,'d'), new  T2(4,'e')]);
+  });
 }

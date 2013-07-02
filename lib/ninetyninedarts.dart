@@ -69,6 +69,8 @@ encodeModified(List l) => pack(l).map((_) => _.length == 1 ? _.first : new T2(_.
 
 decode(List<T2> l) =>l.expand((T2 _) => new List.filled(_.first, _.second));
 
+encodeDirect(List l){}
+
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
     return false;
