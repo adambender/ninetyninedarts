@@ -65,7 +65,7 @@ pack(List l){
 
 encode(List l) =>pack(l).map((_) => new T2(_.length, _.first));
 
-encodeModified(List l){}
+encodeModified(List l) => pack(l).map((_) => _.length == 1 ? _.first : new T2(_.length, _.first));
 
 decode(List l){}
 
