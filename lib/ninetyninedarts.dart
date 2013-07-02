@@ -2,25 +2,68 @@ library ninetyninedarts;
 
 void main() {}
 
-last(List l) {}
+last(List l) => l.last;
 
-penultimate(List l){}
+penultimate(List l){
+  if(l.length < 2)
+    throw "no such element";
+  //Not to clever, if only I could index with -2 or take from the right
+  return l[l.length -2];
+}
 
-nth(int n, List l){}
+nth(int n, List l){
+  if(n >= 0) return l[n];
+  else throw "no such element";
+}
 
-length(List l){}
+length(List l) => l.length;
 
-reverse(List l){}
+reverse(List l) => l.reversed;
 
-isPalindrome(List l){}
+isPalindrome(List l) => iterableEquals(l, l.reversed);
 
-flatten(List l){}
+flatten(List l){
+  //dreaming of a iterable.flatMap like in scala :)
+  var result = [];
+  l.forEach((_){
+    if(_ is List){
+      result.addAll(flatten(_));
+    } else {
+      result.add(_);
+    }
+  });
+  return result;
+}
 
-compress(Iterable l){}
+//Distinction between list and iterable can be kind of annoying since iterable methods
+//return iterables which cant be manipulated like lists.
+compress(Iterable l){
+  if(l.length == 0){
+    return [];
+  } else {
+    var result = [l.first];
+    //would be nice if addall returned the collection;
+    result.addAll(compress(l.skipWhile((_) => l.first == _ )));
+    return result;
+  }
+}
 
-pack(List l){}
+pack(List l){
+  if (l.isEmpty) [[]];
+  else {
+    var result = [[l.first]];
+    for(int i = 1; i < l.length; i++){
+      if(l[i] == result.last.first){
+        result.last.add(l[i]);
+      } else {
+        result.add([l[i]]);
+      }
+    }
+    return result;
+  }
+}
 
-encode(List l){}
+encode(List l) =>pack(l).map((_) => new T2(_.length, _.first));
 
 encodeModified(List l){}
 
