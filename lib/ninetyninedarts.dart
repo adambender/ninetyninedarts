@@ -25,11 +25,11 @@ isPalindrome(List l) => iterableEquals(l, l.reversed);
 flatten(List l){
   //dreaming of a iterable.flatMap like in scala :)
   var result = [];
-  l.forEach((_){
-    if(_ is List){
-      result.addAll(flatten(_));
+  l.forEach((n){
+    if(n is List){
+      result.addAll(flatten(n));
     } else {
-      result.add(_);
+      result.add(n);
     }
   });
   return result;
@@ -42,34 +42,45 @@ compress(Iterable l){
     return [];
   } else {
     var result = [l.first];
-    //would be nice if addall returned the collection;
-    result.addAll(compress(l.skipWhile((_) => l.first == _ )));
-    return result;
+    return result..addAll(compress(l.skipWhile((n) => l.first == n )));
   }
 }
 
 pack(List l){
-  if (l.isEmpty) [[]];
+  if (l.isEmpty) return [[]];
   else {
-    var result = [[l.first]];
-    for(int i = 1; i < l.length; i++){
-      if(l[i] == result.last.first){
-        result.last.add(l[i]);
+    var result = [];
+    l.forEach((n){
+      if(result.isEmpty || n != result.last.first){
+        result.add([n]);
       } else {
-        result.add([l[i]]);
+        result.last.add(n);
       }
-    }
+    });
     return result;
   }
 }
 
-encode(List l) =>pack(l).map((_) => new T2(_.length, _.first));
+encode(List l) =>pack(l).map((n) => new T2(n.length, n.first));
 
-encodeModified(List l) => pack(l).map((_) => _.length == 1 ? _.first : new T2(_.length, _.first));
+encodeModified(List l) => pack(l).map((n) => n.length == 1 ? n.first : new T2(n.length, n.first));
 
-decode(List<T2> l) =>l.expand((T2 _) => new List.filled(_.first, _.second));
+decode(List<T2> l) =>l.expand((T2 n) => new List.filled(n.first, n.second));
 
-encodeDirect(List l){}
+encodeDirect(List l){
+  if (l.isEmpty) return [[]];
+  else {
+    List<T2> result = [new T2(1, l.first)];
+    l.skip(1).forEach((n){
+      if(n != result.last.second){
+        result.add(new T2(1, n));
+      } else {
+        result.last.first++;
+      }
+    });
+    return result;
+  }
+}
 
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
@@ -83,6 +94,7 @@ bool iterableEquals(Iterable l1, Iterable l2){
   return true;
 }
 
+//TODO(bendera): should make this generic
 class T2 {
   var first;
   var second;

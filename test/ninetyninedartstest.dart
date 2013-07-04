@@ -57,7 +57,7 @@ void main() {
   });
 
   test('Run-length encoding of a list (direct solution).', (){
-    expect(encode(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
+    expect(encodeDirect(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
         [new T2(4,'a'), new T2(1,'b'), new T2(2, 'c'), new T2(2,'a'), new T2(1,'d'), new  T2(4,'e')]);
   });
 }
