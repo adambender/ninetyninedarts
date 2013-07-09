@@ -60,4 +60,9 @@ void main() {
     expect(encodeDirect(['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']),
         [new T2(4,'a'), new T2(1,'b'), new T2(2, 'c'), new T2(2,'a'), new T2(1,'d'), new  T2(4,'e')]);
   });
+
+  test('Duplicate the elements of a list.', (){
+    expect(duplicate(['a', 'b', 'c', 'd']),
+        ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd']);
+  });
 }
