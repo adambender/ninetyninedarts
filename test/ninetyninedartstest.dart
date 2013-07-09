@@ -65,4 +65,9 @@ void main() {
     expect(duplicate(['a', 'b', 'c', 'd']),
         ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd']);
   });
+
+  test(' Duplicate the elements of a list a given number of times.', (){
+    expect(duplicateN(3, ['a', 'b', 'c', 'd']),
+        ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', 'd', 'd', 'd']);
+  });
 }
