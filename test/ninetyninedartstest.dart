@@ -81,4 +81,9 @@ void main() {
     expect(splitList.first, ['a', 'b', 'c']);
     expect(splitList.second, [ 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']);
   });
+
+  test('Extract a slice from a list.', (){
+    expect(slice(3, 7,  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+       ['d', 'e', 'f', 'g']);
+  });
 }
