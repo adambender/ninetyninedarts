@@ -77,12 +77,20 @@ void main() {
   });
 
   test('Split a list into two parts.', (){
-    expect(split(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
-       new T2(['a', 'b', 'c',],[ 'd', 'e', 'g', 'h', 'j', 'k']));
+    T2 splitList = split(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']);
+    expect(splitList.first, ['a', 'b', 'c']);
+    expect(splitList.second, [ 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']);
   });
 
   test('Extract a slice from a list.', (){
     expect(slice(3, 7,  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
        ['d', 'e', 'f', 'g']);
+  });
+
+  test('Rotate a list N places to the left.', (){
+    expect(rotate(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+           ['d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'a', 'b', 'c']);
+    expect(rotate(-2, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+        ['j', 'k', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']);
   });
 }
