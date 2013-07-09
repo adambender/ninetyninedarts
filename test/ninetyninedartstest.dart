@@ -66,8 +66,13 @@ void main() {
         ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd']);
   });
 
-  test(' Duplicate the elements of a list a given number of times.', (){
+  test('Duplicate the elements of a list a given number of times.', (){
     expect(duplicateN(3, ['a', 'b', 'c', 'd']),
         ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c', 'd', 'd', 'd']);
+  });
+
+  test('Drop every Nth element from a list.', (){
+    expect(drop(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+        ['a', 'b', 'd', 'e', 'g', 'h', 'j', 'k']);
   });
 }
