@@ -34,6 +34,8 @@ duplicateN(int times, List l){}
 
 drop(int n, List l){}
 
+split(int n, List l){}
+
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
     return false;

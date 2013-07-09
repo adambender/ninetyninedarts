@@ -75,4 +75,9 @@ void main() {
     expect(drop(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
         ['a', 'b', 'd', 'e', 'g', 'h', 'j', 'k']);
   });
+
+  test('Split a list into two parts.', (){
+    expect(split(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+       new T2(['a', 'b', 'd',],[ 'e', 'g', 'h', 'j', 'k']));
+  });
 }
