@@ -61,11 +61,11 @@ pack(List l){
   }
 }
 
-encode(List l) =>pack(l).map((n) => new T2(n.length, n.first));
+encode(List l) => pack(l).map((n) => new T2(n.length, n.first));
 
 encodeModified(List l) => pack(l).map((n) => n.length == 1 ? n.first : new T2(n.length, n.first));
 
-decode(List<T2> l) =>l.expand((T2 n) => new List.filled(n.first, n.second));
+decode(List<T2> l) => l.expand((T2 n) => new List.filled(n.first, n.second));
 
 encodeDirect(List l){
   if (l.isEmpty) return [[]];
@@ -82,15 +82,18 @@ encodeDirect(List l){
   }
 }
 
-duplicate(List l){
-  return l.expand((e) => [e, e]);
-}
+duplicate(List l) => l.expand((e) => [e, e]);
 
-duplicateN(int times, List l){
-  return l.expand((e) => new List.filled(times, e));
-}
 
-drop(int n, List l){}
+duplicateN(int times, List l) =>l.expand((e) => new List.filled(times, e));
+
+drop(int n, List l){
+  var i = 0;
+  return l.where((e){
+    i++;
+    return !(i % n == 0);
+  });
+}
 
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
