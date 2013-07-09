@@ -86,4 +86,11 @@ void main() {
     expect(slice(3, 7,  ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
        ['d', 'e', 'f', 'g']);
   });
+
+  test('Rotate a list N places to the left.', (){
+    expect(rotate(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+           ['d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'a', 'b', 'c']);
+    expect(rotate(-2, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
+        ['j', 'k', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']);
+  });
 }
