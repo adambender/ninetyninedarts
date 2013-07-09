@@ -77,7 +77,8 @@ void main() {
   });
 
   test('Split a list into two parts.', (){
-    expect(split(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
-       new T2(['a', 'b', 'd',],[ 'e', 'g', 'h', 'j', 'k']));
+    T2 splitList = split(3, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']);
+    expect(splitList.first, ['a', 'b', 'c']);
+    expect(splitList.second, [ 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']);
   });
 }
