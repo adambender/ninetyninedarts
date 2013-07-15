@@ -95,6 +95,6 @@ void main() {
   });
 
   test('Remove the Kth element from a list.', (){
-    expect(removeAt(3, ['a', 'b', 'c', 'd']), new T2(['a', 'c', 'd'], 'b'));
+    expect(removeAt(1, ['a', 'b', 'c', 'd']), new T2(['a', 'c', 'd'], 'b'));
   });
 }
