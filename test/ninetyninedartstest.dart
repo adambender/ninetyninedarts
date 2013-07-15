@@ -93,4 +93,8 @@ void main() {
     expect(rotate(-2, ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k']),
         ['j', 'k', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']);
   });
+
+  test('Remove the Kth element from a list.', (){
+    expect(removeAt(3, ['a', 'b', 'c', 'd']), new T2(['a', 'c', 'd'], 'b'));
+  });
 }
