@@ -99,4 +99,8 @@ void main() {
     expect(result.first, ['a', 'c', 'd']);
     expect(result.second, 'b');
   });
+
+  test('Insert an element at a given position into a list.', (){
+    expect(insertAt('new', 1, ['a', 'b', 'c', 'd']), ['a', 'new', 'b', 'c', 'd']);
+  });
 }

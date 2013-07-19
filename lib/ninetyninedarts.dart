@@ -112,6 +112,8 @@ removeAt(int n, List l){
   return new T2(l, item);
 }
 
+insertAt(Object e, int n, List l){}
+
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
     return false;
