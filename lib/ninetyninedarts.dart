@@ -116,6 +116,8 @@ insertAt(Object e, int n, List l) => l..insert(n, e);
 
 range(int start, int end) => new List.generate(end - start + 1, (i) => start + i);
 
+randomSelect(int count, List l){}
+
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
     return false;

@@ -107,4 +107,11 @@ void main() {
   test('Create a list containing all integers within a given range.', (){
     expect(range(4, 9), [4, 5, 6, 7, 8, 9]);
   });
+
+  test('Extract a given number of randomly selected elements from a list.', (){
+    List original  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    List modifiable  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    List result = randomSelect(3, modifiable);
+    expect(original.toSet().difference(modifiable.toSet()), result);
+  });
 }
