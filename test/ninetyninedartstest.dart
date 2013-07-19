@@ -103,4 +103,8 @@ void main() {
   test('Insert an element at a given position into a list.', (){
     expect(insertAt('new', 1, ['a', 'b', 'c', 'd']), ['a', 'new', 'b', 'c', 'd']);
   });
+
+  test('Create a list containing all integers within a given range.', (){
+    expect(range(4, 9), [4, 5, 6, 7, 8, 9]);
+  });
 }
