@@ -44,6 +44,8 @@ removeAt(int n, List l){}
 
 insertAt(Object e, int n, List l){}
 
+range(int start, int end){}
+
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
     return false;
