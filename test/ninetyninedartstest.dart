@@ -97,4 +97,8 @@ void main() {
   test('Remove the Kth element from a list.', (){
     expect(removeAt(1, ['a', 'b', 'c', 'd']), new T2(['a', 'c', 'd'], 'b'));
   });
+
+  test('Insert an element at a given position into a list.', (){
+    expect(insertAt('new', 1, ['a', 'b', 'c', 'd']), ['a', 'new', 'b', 'c', 'd']);
+  });
 }
