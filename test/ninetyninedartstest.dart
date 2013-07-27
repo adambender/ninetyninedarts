@@ -129,4 +129,13 @@ void main() {
       });
     }
   });
+
+  test('Generate a random permutation of the elements of a list.', (){
+    var list = ['a','b','c','d','e','f'];
+    for(int i = 0; i < 1000; i++){
+      List permuted = randomPermute(list);
+      expect(permuted.toSet().difference(list.toSet()), new Set());
+      expect(list.toSet().difference(permuted.toSet()), new Set());
+    }
+  });
 }
