@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:unittest/unittest.dart';
 import '../lib/ninetyninedarts.dart';
 
@@ -111,5 +112,18 @@ void main() {
     List modifiable  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     List result = randomSelect(3, modifiable);
     expect(original.toSet().difference(modifiable.toSet()), result);
+  });
+
+  test('Lotto: Draw N different random numbers from the set 1..M.', (){
+    Random rnd = new Random();
+    for(int i = 0; i < 1000; i++) {
+      var howMany = rnd.nextInt(10) + 5;
+      var lottoNumbers = lotto(howMany, 49);
+      expect(lottoNumbers.length, howMany);
+      lottoNumbers.forEach((_){
+        expect(_, greaterThanOrEqualTo(4));
+        expect(_, lessThanOrEqualTo(14));
+      });
+    }
   });
 }
