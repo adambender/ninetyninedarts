@@ -128,7 +128,7 @@ lotto(int count, int maxValue){
   return randomSelect(count, new List.generate(maxValue + 1, (i) => i));
 }
 
-randomRermute(List l){}
+randomPermute(List l){}
 
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
