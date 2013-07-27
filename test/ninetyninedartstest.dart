@@ -111,9 +111,9 @@ void main() {
 
   test('Extract a given number of randomly selected elements from a list.', (){
     List original  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-    List modifiable  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-    List result = randomSelect(3, modifiable);
-    expect(original.toSet().difference(modifiable.toSet()), unorderedEquals(result));
+    List result = randomSelect(3, original);
+    expect(result.length, 3);
+    expect(original.toSet().containsAll(result.toSet()), true);
   });
 
   test('Lotto: Draw N different random numbers from the set 1..M.', (){
@@ -134,8 +134,7 @@ void main() {
     var list = ['a','b','c','d','e','f'];
     for(int i = 0; i < 1000; i++){
       List permuted = randomPermute(list);
-      expect(permuted.toSet().difference(list.toSet()), new Set());
-      expect(list.toSet().difference(permuted.toSet()), new Set());
+      expect(list, unorderedEquals(permuted));
     }
   });
 }

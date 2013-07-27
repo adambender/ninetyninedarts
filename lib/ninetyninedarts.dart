@@ -119,8 +119,9 @@ range(int start, int end) => new List.generate(end - start + 1, (i) => start + i
 
 randomSelect(int count, List l){
   var rand = new Random();
+  var copy = new List.from(l);
   return new List.generate(count, (i){
-    return removeAt(rand.nextInt(l.length - 1), l).second;
+    return removeAt(rand.nextInt(copy.length), copy).second;
   });
 }
 
@@ -128,7 +129,7 @@ lotto(int count, int maxValue){
   return randomSelect(count, new List.generate(maxValue + 1, (i) => i));
 }
 
-randomPermute(List l){}
+randomPermute(List l) => randomSelect(l.length, l);
 
 bool iterableEquals(Iterable l1, Iterable l2){
   if(l1.length != l2.length){
