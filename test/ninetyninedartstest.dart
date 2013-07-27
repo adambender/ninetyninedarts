@@ -113,18 +113,19 @@ void main() {
     List original  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     List modifiable  = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     List result = randomSelect(3, modifiable);
-    expect(original.toSet().difference(modifiable.toSet()), result);
+    expect(original.toSet().difference(modifiable.toSet()), unorderedEquals(result));
   });
 
   test('Lotto: Draw N different random numbers from the set 1..M.', (){
+    //not a perfect test, but should catch any obvious errors.
     Random rnd = new Random();
     for(int i = 0; i < 1000; i++) {
       var howMany = rnd.nextInt(10) + 5;
       var lottoNumbers = lotto(howMany, 49);
       expect(lottoNumbers.length, howMany);
       lottoNumbers.forEach((_){
-        expect(_, greaterThanOrEqualTo(4));
-        expect(_, lessThanOrEqualTo(14));
+        expect(_, greaterThanOrEqualTo(0));
+        expect(_, lessThanOrEqualTo(49));
       });
     }
   });
