@@ -137,4 +137,8 @@ void main() {
       expect(list, unorderedEquals(permuted));
     }
   });
+
+  test('Generate the combinations of K distinct objects chosen from the N elements of a list.', (){
+    expect(combinations(3, ['a', 'b', 'c', 'd', 'e', 'f']).length, 220);
+  });
 }
