@@ -5,14 +5,14 @@ void main() {}
 
 last(List l) => l.last;
 
-penultimate(List l){
+penultimate(List l) {
   if(l.length < 2)
     throw "no such element";
   //Not to clever, if only I could index with -2 or take from the right
   return l[l.length -2];
 }
 
-nth(int n, List l){
+nth(int n, List l) {
   if(n >= 0) return l[n];
   else throw "no such element";
 }
@@ -23,11 +23,11 @@ reverse(List l) => l.reversed;
 
 isPalindrome(List l) => iterableEquals(l, l.reversed);
 
-flatten(List l){
+flatten(List l) {
   //dreaming of a iterable.flatMap like in scala :)
   var result = [];
-  l.forEach((n){
-    if(n is List){
+  l.forEach((n) {
+    if(n is List) {
       result.addAll(flatten(n));
     } else {
       result.add(n);
@@ -38,8 +38,8 @@ flatten(List l){
 
 //Distinction between list and iterable can be kind of annoying since iterable methods
 //return iterables which cant be manipulated like lists.
-compress(Iterable l){
-  if(l.length == 0){
+compress(Iterable l) {
+  if(l.length == 0) {
     return [];
   } else {
     var result = [l.first];
@@ -47,12 +47,12 @@ compress(Iterable l){
   }
 }
 
-pack(List l){
+pack(List l) {
   if (l.isEmpty) return [[]];
   else {
     var result = [];
-    l.forEach((n){
-      if(result.isEmpty || n != result.last.first){
+    l.forEach((n) {
+      if(result.isEmpty || n != result.last.first) {
         result.add([n]);
       } else {
         result.last.add(n);
@@ -68,12 +68,12 @@ encodeModified(List l) => pack(l).map((n) => n.length == 1 ? n.first : new T2(n.
 
 decode(List<T2> l) => l.expand((T2 n) => new List.filled(n.first, n.second));
 
-encodeDirect(List l){
+encodeDirect(List l) {
   if (l.isEmpty) return [[]];
   else {
     List<T2> result = [new T2(1, l.first)];
-    l.skip(1).forEach((n){
-      if(n != result.last.second){
+    l.skip(1).forEach((n) {
+      if(n != result.last.second) {
         result.add(new T2(1, n));
       } else {
         result.last.first++;
@@ -88,9 +88,9 @@ duplicate(List l) => l.expand((e) => [e, e]);
 
 duplicateN(int times, List l) =>l.expand((e) => new List.filled(times, e));
 
-drop(int n, List l){
+drop(int n, List l) {
   var i = 0;
-  return l.where((e){
+  return l.where((e) {
     i++;
     return !(i % n == 0);
   });
@@ -102,13 +102,13 @@ split(int n, List l) => new T2(l.take(n).toList(), l.skip(n).toList());
 //illustrative example.
 slice(int start, int end, List l) => l.skip(start).take(end - start);
 
-rotate(int n, List l){
+rotate(int n, List l) {
   //it would be neat if operaters like skip and take handled negative arugments.
   int index = n  < 0 ? l.length - n.abs() : n;
   return new List.from(l.skip(index))..addAll(l.take(index).toList());
 }
 
-removeAt(int n, List l){
+removeAt(int n, List l) {
   var item = l.removeAt(n);
   return new T2(l, item);
 }
@@ -117,28 +117,40 @@ insertAt(Object e, int n, List l) => l..insert(n, e);
 
 range(int start, int end) => new List.generate(end - start + 1, (i) => start + i);
 
-randomSelect(int count, List l){
+randomSelect(int count, List l) {
   var rand = new Random();
   var copy = new List.from(l);
-  return new List.generate(count, (i){
+  return new List.generate(count, (i) {
     return removeAt(rand.nextInt(copy.length), copy).second;
   });
 }
 
-lotto(int count, int maxValue){
+lotto(int count, int maxValue) {
   return randomSelect(count, new List.generate(maxValue + 1, (i) => i));
 }
 
 randomPermute(List l) => randomSelect(l.length, l);
 
-combinations(int n, List l){}
+List flatMapSublists(List l1, List f(List l2)) {
+  if(l1.length == 0) return [];
+  return new List.from(f(l1))..addAll(flatMapSublists(l1.sublist(1), f));
+}
 
-bool iterableEquals(Iterable l1, Iterable l2){
-  if(l1.length != l2.length){
+List combinations(int n, List ls) {
+  if (n == 0) return [[]];
+  return flatMapSublists(ls, (List sl) {
+    return combinations(n - 1, sl.sublist(1)).map((_) {
+      return new List.from(_)..insert(0, sl.first);
+    }).toList();
+  });
+}
+
+bool iterableEquals(Iterable l1, Iterable l2) {
+  if(l1.length != l2.length) {
     return false;
   }
-  for(int i = 0; i < l1.length; i++){
-    if(l1.elementAt(i) != l2.elementAt(i)){
+  for(int i = 0; i < l1.length; i++) {
+    if(l1.elementAt(i) != l2.elementAt(i)) {
       return false;
     }
   }
