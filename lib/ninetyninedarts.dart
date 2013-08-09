@@ -133,7 +133,7 @@ randomPermute(List l) => randomSelect(l.length, l);
 
 List flatMapSublists(List l1, List f(List l2)) {
   if(l1.length == 0) return [];
-  return new List.from(f(l1))..addAll(flatMapSublists(l1.sublist(1), f));
+  return f(l1)..addAll(flatMapSublists(l1.sublist(1), f));
 }
 
 List combinations(int n, List ls) {
